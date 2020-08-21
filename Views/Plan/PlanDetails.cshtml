@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Activity Details";
+}
+@model Plan
+
+<div class="container pt-5">
+    <div class="row border-bottom border-dark mb-5">
+            <div class="col-6">
+                <h1>Dojo Activity Center</h1>
+            </div>
+
+            <div class="col-3">
+                <a asp-action="Dashboard" asp-controller="Plan">Home</a>
+            </div>
+
+            <div class="col-3">
+                <a asp-action="Logout" asp-controller="Home">Logout</a>
+            </div>
+    </div>
+
+    <div class="row">
+        <div class="col-9">
+            <h1>@Model.Title</h1>
+        </div>
+
+        <div class="col-3">
+            <form asp-action="CreateParticpant" asp-controller="Plan" asp-route-planId="@Model.PlanId" method="POST">
+                <button type="submit" class="btn btn-success">Join</button>
+            </form>
+        </div>
+
+        <div class="row">
+            <div class="col-10 offset-1">
+                <p class="d-block mb-3">Event Coordinator: @Model.Coordinator.Name</p>
+                <p class="d-block">Description:</p>
+                <p class="d-block mb-8">@Model.Description</p>
+                <ul>Participants:
+                    @foreach (var participant in Model.PlanUser)
+                    {
+                        <li>@participant.User.Name</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

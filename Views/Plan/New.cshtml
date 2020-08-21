@@ -1,0 +1,81 @@
+@{
+    ViewData["Title"] = "New Activity";
+}
+@model Plan
+
+<div class="container pt-5">
+    <div class="row border-bottom border-dark">
+        <div class="col-6">
+            <h1>Dojo Activity Center</h1>
+        </div>
+
+        <div class="col-3">
+            <a asp-action="Dashboard" asp-controller="Plan">Home</a>
+        </div>
+
+        <div class="col-3">
+            <a asp-action="Logout" asp-controller="Home">Logout</a>
+        </div>
+    </div>
+
+    <h2>Create an Activity</h2>
+    <form asp-action="Create" asp-controller="Plan" method="POST">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="Title"></label>
+                    <input asp-for="Title" class="form-control">
+                    <span asp-validation-for="Title" class="text-danger font-weight-bold"></span>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="Time"></label>
+                    <input asp-for="Time" class="form-control">
+                    <span asp-validation-for="Time" class="text-danger font-weight-bold"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label asp-for="Date"></label>
+                    <input asp-for="Date" class="form-control">
+                    <span asp-validation-for="Date" class="text-danger font-weight-bold"></span>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <label asp-for="DurationNumber"></label>
+                <input asp-for="DurationNumber" class="form-control">
+                <span asp-validation-for="DurationNumber" class="text-danger font-weight-bold"></span>
+            </div>
+
+            <div class="col-3">
+                <label asp-for="DurationType"></label>
+                <select asp-for="DurationType" class="custom-select">
+                    <option>Hours</option>
+                    <option>Minutes</option>
+                    <option>Days</option>
+                </select>
+                <span asp-validation-for="DurationType" class="text-danger font-weight-bold"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description"  cols="90" rows="10"></textarea>
+                <span asp-validation-for="Description"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3 offset-9">
+                <button type="submit" class="btn btn-success">Create Activity</button>
+            </div>
+        </div>
+    </form>
+</div>
