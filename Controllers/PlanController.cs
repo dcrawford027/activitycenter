@@ -66,7 +66,7 @@ namespace ActivityCenter.Controllers
             if (ModelState.IsValid)
             {
                 DateTime planDate = newPlan.Date;
-                if ((DateTime.Now - planDate).TotalMinutes < 0)
+                if ((DateTime.Now - planDate).TotalMinutes > 0)
                 {
                     ModelState.AddModelError("Date", "The date must be a future date.");
                     return View("New");
